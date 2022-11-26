@@ -1,0 +1,17 @@
+.nav {
+  align-items: center;
+
+  border-radius: 5px;
+}
+.nav-item {
+  border: 2px solid rgb(233, 227, 227);
+  border-radius: 5px;
+  width: 200px;
+  height: 70px;
+  margin: 5px;
+  color: black;
+  text-align: center;
+}
+a:hover {
+  background-color: rgb(185, 202, 250);
+}
