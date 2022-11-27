@@ -1,1 +1,94 @@
-<p>user-details-pg works!</p>
+<div class="col-md-5 m-auto">
+  <form (ngSubmit)="onFormsSubmit(form)" #form="ngForm">
+    <h3>Add or Edit User</h3>
+
+    <div class="form-group">
+      <label for=""> Name</label>
+      <input
+        required
+        is-valid
+        ngModel
+        name="name"
+        type="text"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">Surname</label>
+      <input
+        ngModel
+        name="surName"
+        type="text"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">Email</label>
+      <input
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
+        required
+        ngModel
+        name="email"
+        type="email"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">ID Number</label>
+      <input
+        ngModel
+        name="ID"
+        type="number"
+        placeholder="enter here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">Birth Day</label>
+      <input
+        ngModel
+        name="Birth-day"
+        type="date"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">category</label>
+      <select ngModel name="category" class="custom-select form-control">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Status</label>
+      <select ngModel name="status" class="custom-select form-control">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button
+        [disabled]="!form.valid"
+        type="submit"
+        class="btn btn-dark col-md-3 d-block"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</div>

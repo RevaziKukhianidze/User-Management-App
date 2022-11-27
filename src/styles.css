@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 body {
-  margin: 20px 20px 0 20px;
+  margin: 40px 10% 0 10%;
 }

@@ -1,0 +1,43 @@
+<div>
+  <br />
+  <a routerLink="../user-details" class="btn btn-primary">Add New User</a>
+  <br />
+  <table class="table mt-2 m">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Email</th>
+        <th scope="col">ID Number</th>
+        <th scope="col">Birth Day</th>
+        <th scope="col">Category</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of pageSize">
+        <td scope="col">{{ user.name }}</td>
+        <td scope="col">{{ user.surName }}</td>
+        <td scope="col">{{ user.email }}</td>
+        <td scope="col">{{ user.idNumber }}</td>
+        <td scope="col">{{ user.birthDay }}</td>
+        <td scope="col">{{ user.category }}</td>
+        <td scope="col">{{ user.status }}</td>
+        <td scope="col">
+          <button routerLink="../user-details" class="btn btn-warning">
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <mat-paginator
+    [length]="this.users.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10]"
+    aria-label="Select page"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
+</div>
