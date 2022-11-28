@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UsersService } from 'src/app/shared/shared-services/users.service';
 
 @Component({
   selector: 'app-user-details-pg',
@@ -7,10 +8,16 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./user-details-pg.component.css'],
 })
 export class UserDetailsPgComponent implements OnInit {
-  constructor() {}
+  constructor(private userService: UsersService) {}
 
   ngOnInit(): void {}
+
   onFormsSubmit(form: NgForm) {
-    console.log(form.value);
+    this.userService.createUser(form.value).subscribe((response) => {
+      if (response) {
+        console.log('resp', response);
+        this.userService.addUserEmitter.emit();
+      }
+    });
   }
 }

@@ -1,1 +1,21 @@
-<p>categories-pg works!</p>
+<br />
+<a class="btn btn-primary">Add category</a>
+<div class="col-md-5 m-auto">
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <th scope="col">Categories</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let category of categories">
+        <td scope="col">{{ category.categoryName }}</td>
+        <td scope="col btns">
+          <button class="btn btn-warning">Update</button>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

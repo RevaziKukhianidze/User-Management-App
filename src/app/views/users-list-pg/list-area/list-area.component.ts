@@ -15,12 +15,17 @@ export class ListAreaComponent implements OnInit {
 
   ngOnInit(): void {
     this.readAllUsers();
+
+    this.usersService.addUserEmitter.subscribe(() => {
+      this.readAllUsers();
+    });
   }
 
   readAllUsers() {
     this.usersService.readAllUsers().subscribe((response: any) => {
-      this.users = response;
-      this.pageSize = response.slice(0, 5);
+      this.users = response.data.serviceResult;
+
+      this.pageSize = response.data.serviceResult.slice(0, 5);
       console.log(this.users);
     });
   }
