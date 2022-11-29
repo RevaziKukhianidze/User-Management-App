@@ -14,6 +14,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const shared: any = [
   CommonModule,
@@ -27,11 +28,13 @@ const shared: any = [
   FormsModule,
   BrowserModule,
   MatPaginatorModule,
+  MatDialogModule,
   BrowserAnimationsModule,
 ];
 
 const materialShared: any = {
   MatInputModule,
+  MatDialogModule,
 };
 
 @NgModule({
@@ -44,6 +47,7 @@ const materialShared: any = {
     FilterAreaComponent,
   ],
   imports: [
+    MatDialogModule,
     MatInputModule,
     FormsModule,
     BrowserModule,

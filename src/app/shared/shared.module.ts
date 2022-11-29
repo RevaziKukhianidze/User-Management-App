@@ -9,8 +9,8 @@ import { FormsModule } from '@angular/forms';
 const shared: any = [
   CommonModule,
   SharedComponentsModule,
-  MatDialogModule,
   FormsModule,
+  MatDialogModule,
   MatButtonModule,
 ];
 

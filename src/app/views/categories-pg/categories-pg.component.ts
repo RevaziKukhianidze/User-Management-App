@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CategoryModalComponent } from 'src/app/shared/shared-modals/category-modal/category-modal.component';
 import { CategoriesService } from 'src/app/shared/shared-services/categories.service';
 
@@ -27,12 +28,17 @@ export class CategoriesPgComponent implements OnInit {
     });
   }
 
-  AddCategoryBtn() {
+  opencategoryModalBtn() {
     const dialogRef = this.dialog.open(CategoryModalComponent);
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
 
-    // dialogRef.componentInstance.setContract(this.contract);
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(111);
+    });
   }
+  //
+  // dialogRef.afterClosed().subscribe((result) => {
+  //   console.log(`Dialog result: ${result}`);
+  // });
+
+  //   // dialogRef.componentInstance.setContract(this.contract);
 }

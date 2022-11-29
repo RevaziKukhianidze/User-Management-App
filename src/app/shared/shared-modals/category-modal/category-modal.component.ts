@@ -7,7 +7,6 @@ import { categoryModel } from '../../shared-models/category.model';
   styleUrls: ['./category-modal.component.css'],
 })
 export class CategoryModalComponent implements OnInit {
-  categoryItem!: categoryModel;
   constructor() {}
 
   ngOnInit(): void {}
