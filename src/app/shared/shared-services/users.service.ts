@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -12,7 +12,6 @@ export class UsersService {
   private apiUrl = environment.baseUrl;
 
   constructor(private httpClient: HttpClient) {}
-
   changeEmitter: EventEmitter<void> = new EventEmitter();
 
   getAllUsers(): Observable<any> {

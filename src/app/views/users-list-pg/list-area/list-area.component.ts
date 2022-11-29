@@ -12,14 +12,14 @@ export class ListAreaComponent implements OnInit {
   users: any[] = [];
   pageSize: any[] = [];
 
-  usersUpdated$ = new Subscription();
-
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.readAllUsers();
+
     this.usersService.changeEmitter.subscribe(() => {
       this.readAllUsers;
+      console.log(123);
     });
   }
 
