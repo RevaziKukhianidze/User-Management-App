@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { map, Observable, Subject, tap } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { userModel } from '../shared-models/user.model';
 
@@ -8,22 +9,20 @@ import { userModel } from '../shared-models/user.model';
   providedIn: 'root',
 })
 export class UsersService {
-  addUserEmitter = new EventEmitter<any>();
+  private apiUrl = environment.baseUrl;
 
-  private apiUrl!: string;
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient) {
-    this.apiUrl = `${environment.baseUrl}`;
-  }
+  changeEmitter: EventEmitter<void> = new EventEmitter();
 
-  readAllUsers(): Observable<any> {
+  getAllUsers(): Observable<any> {
     return this.httpClient.get(this.apiUrl);
   }
 
-  createUser(user: userModel): Observable<any> {
+  createUser(user: userModel) {
     return this.httpClient.post(this.apiUrl, user).pipe(
       map((response: any) => {
-        this.addUserEmitter.emit();
+        this.changeEmitter.emit();
         return response;
       })
     );

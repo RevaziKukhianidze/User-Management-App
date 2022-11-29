@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of pageSize">
+      <tr *ngFor="let user of users">
         <td scope="col">{{ user.firstName }}</td>
         <td scope="col">{{ user.lastName }}</td>
         <td scope="col">{{ user.email }}</td>
@@ -33,12 +33,12 @@
     </tbody>
   </table>
 
-  <mat-paginator
+  <!-- <mat-paginator
     [length]="this.users.length"
     [pageSize]="5"
     [pageSizeOptions]="[5, 10]"
     aria-label="Select page"
     (page)="onPageChange($event)"
   >
-  </mat-paginator>
+  </mat-paginator> -->
 </div>

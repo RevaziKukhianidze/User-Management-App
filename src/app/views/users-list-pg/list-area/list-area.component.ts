@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
+import { Subscription } from 'rxjs';
 import { UsersService } from 'src/app/shared/shared-services/users.service';
 
 @Component({
@@ -11,31 +12,51 @@ export class ListAreaComponent implements OnInit {
   users: any[] = [];
   pageSize: any[] = [];
 
+  usersUpdated$ = new Subscription();
+
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
     this.readAllUsers();
-
-    this.usersService.addUserEmitter.subscribe(() => {
-      this.readAllUsers();
+    this.usersService.changeEmitter.subscribe(() => {
+      this.readAllUsers;
     });
   }
 
   readAllUsers() {
-    this.usersService.readAllUsers().subscribe((response: any) => {
-      this.users = response.data.serviceResult;
-
-      this.pageSize = response.data.serviceResult.slice(0, 5);
-      console.log(this.users);
+    this.usersService.getAllUsers().subscribe((response: any) => {
+      this.users = response.data;
+      console.log('sdsa', response);
     });
   }
-
-  onPageChange(event: PageEvent) {
-    const startIndex = event.pageIndex * event.pageSize;
-    let endIndex = startIndex + event.pageSize;
-    if (endIndex > this.users.length) {
-      endIndex = this.users.length;
-    }
-    this.pageSize = this.users.slice(startIndex, endIndex);
-  }
 }
+
+// readAllUsers() {
+//   this.usersService.getAllUsers().subscribe(
+//     (response: any) => {
+//       this.users = response.data;
+
+//       //   this.usersUpdated$ = this.usersService.usersUpdated$.subscribe(
+//       //     (users) => {
+//       //       console.log('subscribed in list', users);
+//       //       this.users = users;
+//       //     }
+//       //   );
+//       //   this.pageSize = response.data.slice(0, 5);
+//       // });
+//     }
+
+//     // onPageChange(event: PageEvent) {
+//     //   const startIndex = event.pageIndex * event.pageSize;
+//     //   let endIndex = startIndex + event.pageSize;
+//     //   if (endIndex > this.users.length) {
+//     //     endIndex = this.users.length;
+//     //   }
+//     //   this.pageSize = this.users.slice(startIndex, endIndex);
+//     // }
+
+//     // ngOnDestroy(): void {
+//     //   this.usersUpdated$.unsubscribe();
+//     // }
+//   );
+// }

@@ -8,16 +8,11 @@ import { UsersService } from 'src/app/shared/shared-services/users.service';
   styleUrls: ['./user-details-pg.component.css'],
 })
 export class UserDetailsPgComponent implements OnInit {
-  constructor(private userService: UsersService) {}
+  constructor(private UsersService: UsersService) {}
 
   ngOnInit(): void {}
 
   onFormsSubmit(form: NgForm) {
-    this.userService.createUser(form.value).subscribe((response) => {
-      if (response) {
-        console.log('resp', response);
-        this.userService.addUserEmitter.emit();
-      }
-    });
+    this.UsersService.createUser(form.value).subscribe();
   }
 }
