@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CategoryModalComponent } from 'src/app/shared/shared-modals/category-modal/category-modal.component';
@@ -11,6 +11,9 @@ import { CategoriesService } from 'src/app/shared/shared-services/categories.ser
 })
 export class CategoriesPgComponent implements OnInit {
   categories: any[] = [];
+  showModal: boolean = false;
+
+  @Output() showModalEmitter = new EventEmitter<boolean>();
 
   constructor(
     private categoriesService: CategoriesService,
@@ -28,17 +31,11 @@ export class CategoriesPgComponent implements OnInit {
     });
   }
 
-  opencategoryModalBtn() {
-    const dialogRef = this.dialog.open(CategoryModalComponent);
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(111);
-    });
+  onAddCategoryBtn() {
+    this.showModal = !this.showModal;
   }
-  //
-  // dialogRef.afterClosed().subscribe((result) => {
-  //   console.log(`Dialog result: ${result}`);
-  // });
 
-  //   // dialogRef.componentInstance.setContract(this.contract);
+  onShowModalSubscriber(event: boolean) {
+    this.showModal = true;
+  }
 }

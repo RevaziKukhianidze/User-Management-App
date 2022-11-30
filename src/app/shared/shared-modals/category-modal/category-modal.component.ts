@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { categoryModel } from '../../shared-models/category.model';
 
 @Component({
@@ -10,5 +10,20 @@ export class CategoryModalComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  onModalSubmit() {}
+
+  @Input() showModal!: boolean;
+
+  @Output() showModalEmitter = new EventEmitter<boolean>();
+
+  onModalBtnClose() {
+    this.showModal = false;
+  }
+
+  onShowMoadl() {
+    this.showModal = !this.showModal;
+    this.showModalEmitter.emit(this.showModal);
+  }
+  onAddBtn(form: HTMLInputElement) {
+    // aq vwer serviss
+  }
 }

@@ -15,6 +15,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from '../app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from '../shared/shared.module';
 
 const shared: any = [
   CommonModule,
@@ -46,6 +47,7 @@ const materialShared: any = {
     ListAreaComponent,
     FilterAreaComponent,
   ],
+  exports: [[...shared]],
   imports: [
     MatDialogModule,
     MatInputModule,
@@ -54,7 +56,7 @@ const materialShared: any = {
     MatPaginatorModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    SharedModule,
   ],
-  exports: [[...shared]],
 })
 export class ViewsModule {}

@@ -1,44 +1,56 @@
-<!-- <h2 mat-dialog-title>Install Angular</h2>
-<mat-dialog-content class="mat-typography">
-  <div class="form-group">
-    <label for="">Enter vin code</label>
-    <input type="text" placeholder="Enter here" class="form-control" />
-  </div>
-</mat-dialog-content>
+<!-- Button trigger modal -->
+<!-- <button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#staticBackdrop"
+  (click)="onShowMoadl()"
+>
+  Launch static backdrop modal
+</button> -->
 
-<mat-dialog-actions align="end">
-  <button
-    [mat-dialog-close]="true"
-    (click)="onModalSubmit()"
-    class="btn btn-warning col-md-12 d-block"
-  >
-    Update
-  </button>
-</mat-dialog-actions> -->
-<h2>test</h2>
-<!-- <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+<!-- Modal -->
+<div
+  [ngClass]="{ showmodal: showModal }"
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
         <button
           type="button"
-          class="close"
-          data-dismiss="modal"
+          class="btn-close"
+          data-bs-dismiss="modal"
           aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        ></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        <input type="text" #formInput />
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+        <button
+          (click)="onModalBtnClose()"
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
           Close
+        </button>
+        <button
+          (click)="onAddBtn(formInput)"
+          type="button"
+          class="btn btn-primary"
+        >
+          add
         </button>
       </div>
     </div>
   </div>
-</div> -->
+</div>

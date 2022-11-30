@@ -17,6 +17,6 @@ const shared: any = [
 @NgModule({
   declarations: [CategoryModalComponent],
   imports: [...shared],
-  exports: [...shared],
+  exports: [...shared, CategoryModalComponent],
 })
 export class SharedModule {}

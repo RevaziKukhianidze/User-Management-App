@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'user-details', component: UserDetailsPgComponent },
   { path: 'categories', component: CategoriesPgComponent },
   { path: 'statuses', component: StatusesPgComponent },
+
+  { path: '', component: UsersListPgComponent },
 ];
 
 @NgModule({
