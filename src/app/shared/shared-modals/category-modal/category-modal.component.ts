@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { categoryModel } from '../../shared-models/category.model';
+import { CategoriesService } from '../../shared-services/categories.service';
 
 @Component({
   selector: 'app-category-modal',
@@ -7,7 +9,7 @@ import { categoryModel } from '../../shared-models/category.model';
   styleUrls: ['./category-modal.component.css'],
 })
 export class CategoryModalComponent implements OnInit {
-  constructor() {}
+  constructor(private categoriesService: CategoriesService) {}
 
   ngOnInit(): void {}
 
@@ -23,7 +25,8 @@ export class CategoryModalComponent implements OnInit {
     this.showModal = !this.showModal;
     this.showModalEmitter.emit(this.showModal);
   }
-  onAddBtn(form: HTMLInputElement) {
-    // aq vwer serviss
+  onAddBtn(form: NgForm) {
+    console.log('parse', form.value);
+    this.categoriesService.createCategory(form.value).subscribe();
   }
 }

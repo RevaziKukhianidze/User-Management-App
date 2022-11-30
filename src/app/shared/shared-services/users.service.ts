@@ -21,6 +21,7 @@ export class UsersService {
   createUser(user: userModel) {
     return this.httpClient.post(this.apiUrl, user).pipe(
       map((response: any) => {
+        console.log(response);
         this.changeEmitter.emit();
         return response;
       })
