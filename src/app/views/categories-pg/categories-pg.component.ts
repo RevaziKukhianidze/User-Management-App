@@ -44,7 +44,7 @@ export class CategoriesPgComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
-  onDeleteCategoryBtn(id: any) {
+  onDeleteCategoryBtn(id: string) {
     Swal.fire({
       title: 'Do you want to delete this Category?',
       showCancelButton: true,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 
 import { UsersService } from 'src/app/shared/shared-services/users.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-area',
@@ -27,6 +28,19 @@ export class ListAreaComponent implements OnInit {
     this.usersService.getAllUsers().subscribe((response: any) => {
       this.users = response.data;
       console.log('sdsa', response);
+    });
+  }
+
+  onDeleteUserBtn(id: string) {
+    Swal.fire({
+      title: 'Do you want to delete this user?',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      denyButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.usersService.deleteUser(id).subscribe();
+      }
     });
   }
 }

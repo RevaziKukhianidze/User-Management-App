@@ -28,6 +28,9 @@
           <button routerLink="../user-details" class="btn btn-warning">
             Edit
           </button>
+          <button (click)="onDeleteUserBtn(user._id)" class="btn btn-danger">
+            Delete
+          </button>
         </td>
       </tr>
     </tbody>
