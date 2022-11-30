@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { Subscription } from 'rxjs';
+
 import { UsersService } from 'src/app/shared/shared-services/users.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class ListAreaComponent implements OnInit {
     this.readAllUsers();
 
     this.usersService.changeEmitter.subscribe(() => {
-      this.readAllUsers;
+      this.readAllUsers();
       console.log(123);
     });
   }

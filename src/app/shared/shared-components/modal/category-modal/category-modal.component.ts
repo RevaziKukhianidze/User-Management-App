@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { CategoriesPgComponent } from 'src/app/views/categories-pg/categories-pg.component';
-import { CategoriesService } from '../../shared-services/categories.service';
+import { CategoriesService } from 'src/app/shared/shared-services/categories.service';
 
 @Component({
   selector: 'app-category-modal',
@@ -9,19 +8,9 @@ import { CategoriesService } from '../../shared-services/categories.service';
   styleUrls: ['./category-modal.component.css'],
 })
 export class CategoryModalComponent implements OnInit {
-  updateCategoryItem!: any;
+  constructor(private categoriesService: CategoriesService) {}
 
-  constructor(
-    private categoriesService: CategoriesService,
-    private categoriesPgComponent: CategoriesPgComponent
-  ) {}
-
-  ngOnInit(): void {
-    this.categoriesPgComponent.updateCategoryEmitter.subscribe((item) => {
-      this.updateCategoryItem = item;
-      console.log('reseived from emiter', this.updateCategoryItem);
-    });
-  }
+  ngOnInit(): void {}
 
   @Input() showModal!: boolean;
 
@@ -35,9 +24,8 @@ export class CategoryModalComponent implements OnInit {
     this.showModal = !this.showModal;
     this.showModalEmitter.emit(this.showModal);
   }
-
   onAddBtn(form: NgForm) {
+    console.log('parse', form.value);
     this.categoriesService.createCategory(form.value).subscribe();
-    this.showModal = false;
   }
 }

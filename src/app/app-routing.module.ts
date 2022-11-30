@@ -6,12 +6,11 @@ import { UserDetailsPgComponent } from './views/user-details-pg/user-details-pg.
 import { UsersListPgComponent } from './views/users-list-pg/users-list-pg.component';
 
 const routes: Routes = [
+  { path: '', component: UsersListPgComponent },
   { path: 'users', component: UsersListPgComponent },
   { path: 'user-details', component: UserDetailsPgComponent },
   { path: 'categories', component: CategoriesPgComponent },
   { path: 'statuses', component: StatusesPgComponent },
-
-  { path: '', component: UsersListPgComponent },
 ];
 
 @NgModule({
