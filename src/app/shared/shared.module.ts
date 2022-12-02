@@ -5,6 +5,7 @@ import { CategoryModalComponent } from './shared-modals/category-modal/category-
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StatusModalComponent } from './shared-modals/status-modal/status-modal.component';
 
 const shared: any = [
   CommonModule,
@@ -16,8 +17,8 @@ const shared: any = [
 ];
 
 @NgModule({
-  declarations: [CategoryModalComponent],
+  declarations: [CategoryModalComponent, StatusModalComponent],
   imports: [...shared],
-  exports: [...shared, CategoryModalComponent],
+  exports: [...shared, CategoryModalComponent, StatusModalComponent],
 })
 export class SharedModule {}

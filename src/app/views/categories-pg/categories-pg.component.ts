@@ -21,6 +21,8 @@ export class CategoriesPgComponent implements OnInit {
 
   @Output() showModalEmitter = new EventEmitter<boolean>();
   @Output() updateCategoryEmitter = new EventEmitter();
+  @ViewChild(CategoryModalComponent) openModal!: CategoryModalComponent;
+  @Output() editItemUpdateId = new EventEmitter();
 
   constructor(
     private categoriesService: CategoriesService,
@@ -40,9 +42,6 @@ export class CategoriesPgComponent implements OnInit {
       this.categories = response.data;
     });
   }
-
-  @ViewChild(CategoryModalComponent) openModal!: CategoryModalComponent;
-  @Output() editItemUpdateId = new EventEmitter();
 
   onUpdateCategoryBtn(item: any) {
     this.openModal.loadEditData(item);

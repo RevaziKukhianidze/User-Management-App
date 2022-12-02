@@ -1,0 +1,47 @@
+<div
+  [ngClass]="{ showmodal: showModal }"
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+      </div>
+
+      <form [formGroup]="statusItem" (ngSubmit)="onAddBtn()">
+        <div class="form-group">
+          <label for=""> status</label>
+          <input
+            formControlName="statusName"
+            type="text"
+            placeholder="Enter Here"
+            class="form-control"
+          />
+        </div>
+      </form>
+      <div class="modal-footer">
+        <button
+          (click)="onModalBtnClose()"
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
+        <button (click)="onAddBtn()" type="button" class="btn btn-primary">
+          add
+        </button>
+        <button (click)="onSaveBtn()" type="button" class="btn btn-primary">
+          save
+        </button>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+</div>

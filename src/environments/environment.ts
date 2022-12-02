@@ -7,6 +7,7 @@ export const environment = {
   // baseUrl: 'http://localhost:8000/users',
   baseUrl: 'http://127.0.0.1:3600/api/v1/users',
   baseCategoriesApiUrl: 'http://127.0.0.1:3600/api/v1/categories',
+  baseStatusesApiUrl: 'http://127.0.0.1:3600/api/v1/statuses',
 };
 
 /*
