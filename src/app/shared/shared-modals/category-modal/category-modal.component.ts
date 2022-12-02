@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { CategoriesPgComponent } from 'src/app/views/categories-pg/categories-pg.component';
 import { CategoriesService } from '../../shared-services/categories.service';
 
@@ -9,35 +9,61 @@ import { CategoriesService } from '../../shared-services/categories.service';
   styleUrls: ['./category-modal.component.css'],
 })
 export class CategoryModalComponent implements OnInit {
-  updateCategoryItem!: any;
+  categoryItem!: any;
+
+  editdata: any;
+
+  updateItemId!: string;
 
   constructor(
     private categoriesService: CategoriesService,
     private categoriesPgComponent: CategoriesPgComponent
-  ) {}
+  ) {
+    this.initForm();
+  }
 
   ngOnInit(): void {
-    this.categoriesPgComponent.updateCategoryEmitter.subscribe((item) => {
-      this.updateCategoryItem = item;
-      console.log('reseived from emiter', this.updateCategoryItem);
+    this.categoriesPgComponent.updateCategoryEmitter.subscribe((response) => {
+      this.updateItemId = response._id;
+    });
+  }
+
+  initForm() {
+    this.categoryItem = new FormGroup({
+      categoryName: new FormControl(),
     });
   }
 
   @Input() showModal!: boolean;
-
   @Output() showModalEmitter = new EventEmitter<boolean>();
 
-  onModalBtnClose() {
+  loadEditData(item: any) {
+    this.showModal = !this.showModal;
+    this.categoryItem.setValue({
+      categoryName: item.categoryName,
+    });
+  }
+
+  onSaveBtn() {
+    const value = JSON.parse(JSON.stringify(this.categoryItem.value));
+    const categoryItemvalue = JSON.parse(JSON.stringify(value));
+    const obj = {
+      id: this.updateItemId,
+      categoryName: categoryItemvalue.categoryName,
+    };
+    this.categoriesService.updateCategory(obj).subscribe();
+    this.categoryItem.reset();
     this.showModal = false;
   }
 
-  onShowMoadl() {
-    this.showModal = !this.showModal;
-    this.showModalEmitter.emit(this.showModal);
+  onAddBtn() {
+    console.log(this.categoryItem.value);
+    this.categoriesService.createCategory(this.categoryItem.value).subscribe();
+    this.categoryItem.reset();
+    this.showModal = false;
   }
 
-  onAddBtn(form: NgForm) {
-    this.categoriesService.createCategory(form.value).subscribe();
+  onModalBtnClose() {
     this.showModal = false;
   }
 }

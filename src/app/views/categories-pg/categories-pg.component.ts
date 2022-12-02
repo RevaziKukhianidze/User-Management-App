@@ -1,6 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatDialogModule } from '@angular/material/dialog';
 import { CategoryModalComponent } from 'src/app/shared/shared-modals/category-modal/category-modal.component';
 import { CategoriesService } from 'src/app/shared/shared-services/categories.service';
 import Swal from 'sweetalert2';
@@ -36,6 +41,14 @@ export class CategoriesPgComponent implements OnInit {
     });
   }
 
+  @ViewChild(CategoryModalComponent) openModal!: CategoryModalComponent;
+  @Output() editItemUpdateId = new EventEmitter();
+
+  onUpdateCategoryBtn(item: any) {
+    this.openModal.loadEditData(item);
+    this.updateCategoryEmitter.emit(item);
+  }
+
   onShowModalSubscriber(event: boolean) {
     this.showModal = false;
   }
@@ -55,9 +68,5 @@ export class CategoriesPgComponent implements OnInit {
         this.categoriesService.deleteCategory(id).subscribe();
       }
     });
-  }
-  onUpdateCategoryBtn(categoryItem: any) {
-    this.showModal = !this.showModal;
-    this.updateCategoryEmitter.emit(categoryItem);
   }
 }

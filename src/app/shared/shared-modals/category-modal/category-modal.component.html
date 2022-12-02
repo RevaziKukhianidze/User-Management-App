@@ -14,14 +14,11 @@
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
       </div>
 
-      <form (ngSubmit)="onAddBtn(form)" #form="ngForm">
+      <form [formGroup]="categoryItem" (ngSubmit)="onAddBtn()">
         <div class="form-group">
           <label for=""> category</label>
           <input
-            required
-            is-valid
-            ngModel
-            name="categoryName"
+            formControlName="categoryName"
             type="text"
             placeholder="Enter Here"
             class="form-control"
@@ -37,9 +34,13 @@
         >
           Close
         </button>
-        <button (click)="onAddBtn(form)" type="button" class="btn btn-primary">
+        <button (click)="onAddBtn()" type="button" class="btn btn-primary">
           add
         </button>
+        <button (click)="onSaveBtn()" type="button" class="btn btn-primary">
+          save
+        </button>
+        <div class="modal-footer"></div>
       </div>
     </div>
   </div>

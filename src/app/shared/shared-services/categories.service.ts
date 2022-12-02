@@ -34,10 +34,13 @@ export class CategoriesService {
   }
 
   updateCategory(categoryItem: categoryModel): Observable<any> {
-    return this.httpClient.put(
-      `${this.apiUrl}/${categoryItem.id}`,
-      categoryItem
-    );
+    return this.httpClient
+      .put(`${this.apiUrl}/${categoryItem.id}`, categoryItem)
+      .pipe(
+        map((response: any) => {
+          this.changeEmitter.emit();
+        })
+      );
   }
 
   deleteCategory(categoryId: string): Observable<any> {
