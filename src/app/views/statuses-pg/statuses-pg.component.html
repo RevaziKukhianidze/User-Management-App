@@ -15,7 +15,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let status of statuses">
+      <tr *ngFor="let status of pageSize">
         <td scope="col">{{ status.statusName }}</td>
         <td scope="col btns">
           <button (click)="onUpdateStatusBtn(status)" class="btn btn-warning">
@@ -31,4 +31,12 @@
       </tr>
     </tbody>
   </table>
+  <mat-paginator
+    [length]="this.statuses.length"
+    [pageSize]="5"
+    [pageSizeOptions]="[5, 10]"
+    aria-label="Select page"
+    (page)="onPageChange($event)"
+  >
+  </mat-paginator>
 </div>

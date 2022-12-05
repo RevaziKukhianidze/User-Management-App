@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr *ngFor="let user of pageSize">
         <td scope="col">{{ user.firstName }}</td>
         <td scope="col">{{ user.lastName }}</td>
         <td scope="col">{{ user.email }}</td>
@@ -25,7 +25,11 @@
         <td scope="col">{{ user.category }}</td>
         <td scope="col">{{ user.status }}</td>
         <td scope="col">
-          <button routerLink="../user-details" class="btn btn-warning">
+          <button
+            routerLink="../user-details"
+            (click)="onUpdateUserBtn(user._id)"
+            class="btn btn-warning"
+          >
             Edit
           </button>
           <button (click)="onDeleteUserBtn(user._id)" class="btn btn-danger">
@@ -36,12 +40,12 @@
     </tbody>
   </table>
 
-  <!-- <mat-paginator
+  <mat-paginator
     [length]="this.users.length"
     [pageSize]="5"
     [pageSizeOptions]="[5, 10]"
     aria-label="Select page"
     (page)="onPageChange($event)"
   >
-  </mat-paginator> -->
+  </mat-paginator>
 </div>

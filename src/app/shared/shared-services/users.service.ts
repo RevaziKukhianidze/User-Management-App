@@ -13,9 +13,15 @@ export class UsersService {
 
   constructor(private httpClient: HttpClient) {}
   changeEmitter: EventEmitter<void> = new EventEmitter();
+  updateUserEmitter = new EventEmitter();
+  updatebuttonEmitter = new EventEmitter();
 
   getAllUsers(): Observable<any> {
     return this.httpClient.get(this.apiUrl);
+  }
+
+  getSingleUser(userId: string): Observable<any> {
+    return this.httpClient.get(`${this.apiUrl}/${userId}`);
   }
 
   createUser(user: userModel) {
@@ -24,6 +30,14 @@ export class UsersService {
         console.log(response);
         this.changeEmitter.emit();
         return response;
+      })
+    );
+  }
+
+  updateUser(user: userModel): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/${user.id}`, user).pipe(
+      map((response) => {
+        this.changeEmitter.emit();
       })
     );
   }

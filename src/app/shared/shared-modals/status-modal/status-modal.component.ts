@@ -24,7 +24,7 @@ export class StatusModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.statusesPgComponent.updateStatusEmitter.subscribe((response) => {
-      this.updateItemId = response._id;
+      this.updateItemId = response;
     });
   }
 
@@ -44,24 +44,25 @@ export class StatusModalComponent implements OnInit {
     });
   }
 
-  onSaveBtn() {
-    const value = JSON.parse(JSON.stringify(this.statusItem.value));
-    const statusItemvalue = JSON.parse(JSON.stringify(value));
-    const obj = {
-      id: this.updateItemId,
-      statusName: statusItemvalue.statusName,
-    };
-    this.statusesService.updateStatus(obj).subscribe();
-    this.statusItem.reset();
-    this.showModal = false;
-  }
   onAddBtn() {
-    console.log(this.statusItem.value);
-    this.statusesService.createStatus(this.statusItem.value).subscribe();
-    this.statusItem.reset();
-    this.showModal = false;
+    if (!this.updateItemId) {
+      this.statusesService.createStatus(this.statusItem.value).subscribe();
+      this.statusItem.reset();
+      this.showModal = false;
+    } else {
+      const value = JSON.parse(JSON.stringify(this.statusItem.value));
+      const statusItemvalue = JSON.parse(JSON.stringify(value));
+      const obj = {
+        id: this.updateItemId,
+        statusName: statusItemvalue.statusName,
+      };
+      this.statusesService.updateStatus(obj).subscribe();
+      this.statusItem.reset();
+      this.showModal = false;
+    }
   }
   onModalBtnClose() {
     this.showModal = false;
+    this.statusItem.reset();
   }
 }

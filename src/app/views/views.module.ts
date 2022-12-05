@@ -8,7 +8,7 @@ import { ListAreaComponent } from './users-list-pg/list-area/list-area.component
 import { FilterAreaComponent } from './users-list-pg/filter-area/filter-area.component';
 
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -33,11 +33,6 @@ const shared: any = [
   BrowserAnimationsModule,
 ];
 
-const materialShared: any = {
-  MatInputModule,
-  MatDialogModule,
-};
-
 @NgModule({
   declarations: [
     UsersListPgComponent,
@@ -57,6 +52,9 @@ const materialShared: any = {
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class ViewsModule {}

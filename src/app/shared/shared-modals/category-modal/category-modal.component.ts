@@ -11,8 +11,6 @@ import { CategoriesService } from '../../shared-services/categories.service';
 export class CategoryModalComponent implements OnInit {
   categoryItem!: any;
 
-  editdata: any;
-
   updateItemId!: string;
 
   constructor(
@@ -44,26 +42,28 @@ export class CategoryModalComponent implements OnInit {
     });
   }
 
-  onSaveBtn() {
-    const value = JSON.parse(JSON.stringify(this.categoryItem.value));
-    const categoryItemvalue = JSON.parse(JSON.stringify(value));
-    const obj = {
-      id: this.updateItemId,
-      categoryName: categoryItemvalue.categoryName,
-    };
-    this.categoriesService.updateCategory(obj).subscribe();
-    this.categoryItem.reset();
-    this.showModal = false;
-  }
-
   onAddBtn() {
-    console.log(this.categoryItem.value);
-    this.categoriesService.createCategory(this.categoryItem.value).subscribe();
-    this.categoryItem.reset();
-    this.showModal = false;
+    if (!this.updateItemId) {
+      this.categoriesService
+        .createCategory(this.categoryItem.value)
+        .subscribe();
+      this.categoryItem.reset();
+      this.showModal = false;
+    } else {
+      const value = JSON.parse(JSON.stringify(this.categoryItem.value));
+      const categoryItemvalue = JSON.parse(JSON.stringify(value));
+      const obj = {
+        id: this.updateItemId,
+        categoryName: categoryItemvalue.categoryName,
+      };
+      this.categoriesService.updateCategory(obj).subscribe();
+      this.categoryItem.reset();
+      this.showModal = false;
+    }
   }
 
   onModalBtnClose() {
     this.showModal = false;
+    this.categoryItem.reset();
   }
 }

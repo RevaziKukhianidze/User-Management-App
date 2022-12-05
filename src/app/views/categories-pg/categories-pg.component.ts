@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PageEvent } from '@angular/material/paginator';
 import { CategoryModalComponent } from 'src/app/shared/shared-modals/category-modal/category-modal.component';
 import { CategoriesService } from 'src/app/shared/shared-services/categories.service';
 import Swal from 'sweetalert2';
@@ -16,6 +17,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./categories-pg.component.css'],
 })
 export class CategoriesPgComponent implements OnInit {
+  pageSize: any[] = [];
   categories: any[] = [];
   showModal: boolean = false;
 
@@ -40,6 +42,7 @@ export class CategoriesPgComponent implements OnInit {
   readAllCategories() {
     this.categoriesService.readAllCategories().subscribe((response: any) => {
       this.categories = response.data;
+      this.pageSize = response.data.slice(0, 5);
     });
   }
 
@@ -67,5 +70,14 @@ export class CategoriesPgComponent implements OnInit {
         this.categoriesService.deleteCategory(id).subscribe();
       }
     });
+  }
+  onPageChange(event: PageEvent) {
+    const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.categories.length) {
+      endIndex = this.categories.length;
+    }
+    this.pageSize = this.categories.slice(startIndex, endIndex);
+    console.log(this.pageSize);
   }
 }
