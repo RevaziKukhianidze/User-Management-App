@@ -50,6 +50,5 @@ export class ReadUsersComponent {
       endIndex = this.users.length;
     }
     this.pageSize = this.users.slice(startIndex, endIndex);
-    console.log(this.pageSize);
   }
 }

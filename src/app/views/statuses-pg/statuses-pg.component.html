@@ -28,7 +28,7 @@
     <tbody>
       <tr *ngFor="let status of pageSize | filter : searchText">
         <td scope="col">{{ status.statusName }}</td>
-        <td scope="col  text-right">
+        <td scope="col ">
           <button (click)="onUpdateStatusBtn(status)" class="btn btn-warning">
             Update
           </button>

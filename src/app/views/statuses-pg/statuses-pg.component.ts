@@ -73,6 +73,5 @@ export class StatusesPgComponent implements OnInit {
       endIndex = this.statuses.length;
     }
     this.pageSize = this.statuses.slice(startIndex, endIndex);
-    console.log(this.pageSize);
   }
 }

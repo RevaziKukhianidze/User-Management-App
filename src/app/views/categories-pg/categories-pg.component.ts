@@ -79,6 +79,5 @@ export class CategoriesPgComponent implements OnInit {
       endIndex = this.categories.length;
     }
     this.pageSize = this.categories.slice(startIndex, endIndex);
-    console.log(this.pageSize);
   }
 }

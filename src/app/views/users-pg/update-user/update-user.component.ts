@@ -54,11 +54,9 @@ export class UpdateUserComponent {
   }
 
   onFormsSubmit(form: NgForm) {
-    console.log('test', this.currentUserItem._id, form.value);
     this.usersService
       .updateUser(this.currentUserItem._id, form.value)
       .subscribe((response) => {
-        console.log('rsponse update', response);
         if (response) {
           this.router.navigate(['/users']);
         }
