@@ -8,6 +8,7 @@ import { UpdateUserComponent } from './views/users-pg/update-user/update-user.co
 import { UsersPgComponent } from './views/users-pg/users-pg.component';
 
 const routes: Routes = [
+  { path: '', component: ReadUsersComponent },
   {
     path: 'users',
     component: UsersPgComponent,
