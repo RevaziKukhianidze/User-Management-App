@@ -1,6 +1,17 @@
 <div>
   <a routerLink="/users/create" class="btn btn-info">Add User</a>
   <br />
+  <div class="col-md-4 m-auto search-hero">
+    <input
+      class="form-control"
+      type="text"
+      name="search"
+      [(ngModel)]="searchText"
+      autocomplete="off"
+      placeholder=" search users "
+    />
+  </div>
+  <br />
   <table class="table mt-2 m">
     <thead>
       <tr>
@@ -15,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of pageSize">
+      <tr *ngFor="let user of pageSize | filter : searchText">
         <td scope="col">{{ user.firstName }}</td>
         <td scope="col">{{ user.lastName }}</td>
         <td scope="col">{{ user.email }}</td>

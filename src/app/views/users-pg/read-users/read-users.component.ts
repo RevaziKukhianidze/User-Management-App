@@ -11,6 +11,7 @@ import Swal from 'sweetalert2';
 export class ReadUsersComponent {
   users: any[] = [];
   pageSize: any[] = [];
+  searchText: any;
 
   constructor(private usersService: UsersService) {}
 
