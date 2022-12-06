@@ -1,11 +1,12 @@
 <div class="col-md-5 m-auto">
-  <form [formGroup]="userItem" (ngSubmit)="onFormsSubmit()">
-    <h3>Add or Edit User</h3>
+  <form #form="ngForm" (ngSubmit)="onFormsSubmit(form)">
+    <h3>Add New User</h3>
 
     <div class="form-group">
       <label for=""> Name</label>
       <input
-        formControlName="firstName"
+        ngModel
+        name="firstName"
         type="text"
         placeholder="Enter Here"
         class="form-control"
@@ -15,7 +16,8 @@
     <div class="form-group">
       <label for="">Surname</label>
       <input
-        formControlName="lastName"
+        ngModel
+        name="lastName"
         type="text"
         placeholder="Enter Here"
         class="form-control"
@@ -25,18 +27,21 @@
     <div class="form-group">
       <label for="">Email</label>
       <input
+        ngModel
         required
-        formControlName="email"
+        name="email"
         type="email"
         placeholder="Enter Here"
         class="form-control"
+        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$"
       />
     </div>
 
     <div class="form-group">
       <label for="">ID Number</label>
       <input
-        formControlName="idNumber"
+        ngModel
+        name="idNumber"
         type="number"
         placeholder="enter here"
         class="form-control"
@@ -46,7 +51,8 @@
     <div class="form-group">
       <label for="">Birth Day</label>
       <input
-        formControlName="birthDate"
+        ngModel
+        name="birthDate"
         type="date"
         placeholder="Enter Here"
         class="form-control"
@@ -55,7 +61,7 @@
 
     <div class="form-group">
       <label for="">category</label>
-      <select formControlName="category" class="custom-select form-control">
+      <select ngModel name="category" class="custom-select form-control">
         <option
           *ngFor="let category of categories"
           [value]="[category.categoryName]"
@@ -67,7 +73,7 @@
 
     <div class="form-group">
       <label for="">Status</label>
-      <select formControlName="status" class="custom-select form-control">
+      <select ngModel name="status" class="custom-select form-control">
         <option *ngFor="let status of statuses" [value]="[status.statusName]">
           {{ status.statusName }}
         </option>
@@ -76,14 +82,11 @@
 
     <div class="form-group">
       <button
-        (click)="onFormsSubmit()"
-        type="button"
-        class="btn btn-dark col-md-3 d-block"
+        [disabled]="!form.valid"
+        type="submit"
+        class="btn btn-info col-md-3 d-block"
       >
         Add
-      </button>
-      <button (click)="onSaveBtn()" type="button" class="btn btn-primary">
-        save
       </button>
     </div>
   </form>

@@ -11,12 +11,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Category</h1>
       </div>
 
       <form [formGroup]="categoryItem" (ngSubmit)="onAddBtn()">
         <div class="form-group">
-          <label for=""> category</label>
           <input
             formControlName="categoryName"
             type="text"
@@ -34,7 +33,7 @@
         >
           Close
         </button>
-        <button (click)="onAddBtn()" type="button" class="btn btn-primary">
+        <button (click)="onAddBtn()" type="button" class="btn btn-info">
           Save
         </button>
         <div class="modal-footer"></div>

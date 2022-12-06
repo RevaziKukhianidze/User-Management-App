@@ -1,6 +1,5 @@
 .nav {
   align-items: center;
-
   border-radius: 5px;
 }
 .nav-item {
@@ -8,10 +7,7 @@
   border-radius: 5px;
   width: 200px;
   height: 70px;
-  margin: 5px;
-  color: black;
+  margin: 5px 20px;
   text-align: center;
-}
-a:hover {
-  background-color: rgb(185, 202, 250);
+  font-size: 20px;
 }

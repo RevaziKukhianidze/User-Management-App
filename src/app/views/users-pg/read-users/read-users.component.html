@@ -1,6 +1,5 @@
 <div>
-  <br />
-  <a routerLink="../user-details" class="btn btn-primary">Add New User</a>
+  <a routerLink="/users/create" class="btn btn-info">Add User</a>
   <br />
   <table class="table mt-2 m">
     <thead>
@@ -21,17 +20,14 @@
         <td scope="col">{{ user.lastName }}</td>
         <td scope="col">{{ user.email }}</td>
         <td scope="col">{{ user.idNumber }}</td>
-        <td scope="col">{{ user.birthDate }}</td>
+        <td scope="col">{{ user.birthDate | date }}</td>
         <td scope="col">{{ user.category }}</td>
         <td scope="col">{{ user.status }}</td>
         <td scope="col">
-          <button
-            routerLink="../user-details"
-            (click)="onUpdateUserBtn(user._id)"
-            class="btn btn-warning"
+          <a routerLink="/users/update/{{ user._id }}" class="btn btn-warning"
+            >Update</a
           >
-            Edit
-          </button>
+
           <button (click)="onDeleteUserBtn(user._id)" class="btn btn-danger">
             Delete
           </button>

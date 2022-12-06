@@ -1,20 +1,16 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-
 import { UsersService } from 'src/app/shared/shared-services/users.service';
 import Swal from 'sweetalert2';
-import { UserDetailsPgComponent } from '../../user-details-pg/user-details-pg.component';
 
 @Component({
-  selector: 'app-list-area',
-  templateUrl: './list-area.component.html',
-  styleUrls: ['./list-area.component.css'],
+  selector: 'app-read-users',
+  templateUrl: './read-users.component.html',
+  styleUrls: ['./read-users.component.css'],
 })
-export class ListAreaComponent implements OnInit {
+export class ReadUsersComponent {
   users: any[] = [];
   pageSize: any[] = [];
-
-  @ViewChild(UserDetailsPgComponent) openModal!: UserDetailsPgComponent;
 
   constructor(private usersService: UsersService) {}
 
@@ -31,10 +27,6 @@ export class ListAreaComponent implements OnInit {
       this.users = response.data;
       this.pageSize = response.data.slice(0, 5);
     });
-  }
-  onUpdateUserBtn(userId: any) {
-    // this.openModal.loadEditdata(userId);
-    this.usersService.updateUserEmitter.emit(userId);
   }
 
   onDeleteUserBtn(id: string) {

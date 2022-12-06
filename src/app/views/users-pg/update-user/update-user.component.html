@@ -1,0 +1,97 @@
+<div class="col-md-5 m-auto">
+  <form #form="ngForm" (ngSubmit)="onFormsSubmit(form)">
+    <h3>Update User</h3>
+
+    <div class="form-group">
+      <div class="form-group d-none">
+        <label for=""> id</label>
+        <input
+          name="_id"
+          ngModel
+          type="text"
+          placeholder="Enter here"
+          class="form-control"
+        />
+      </div>
+      <label for=""> Name</label>
+      <input
+        ngModel
+        name="firstName"
+        type="text"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">Surname</label>
+      <input
+        ngModel
+        name="lastName"
+        type="text"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">Email</label>
+      <input
+        ngModel
+        name="email"
+        type="email"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">ID Number</label>
+      <input
+        ngModel
+        name="idNumber"
+        type="number"
+        placeholder="enter here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">Birth Day</label>
+      <input
+        ngModel
+        name="birthDate"
+        type="date"
+        placeholder="Enter Here"
+        class="form-control"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="">category</label>
+      <select ngModel name="category" class="custom-select form-control">
+        <option
+          *ngFor="let category of categories"
+          [value]="[category.categoryName]"
+        >
+          {{ category.categoryName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="">Status</label>
+      <select ngModel name="status" class="custom-select form-control">
+        <option *ngFor="let status of statuses" [value]="[status.statusName]">
+          {{ status.statusName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-info col-md-3 d-block">Save</button>
+    </div>
+  </form>
+</div>
+
+<!-- [disabled]="!form.valid" -->

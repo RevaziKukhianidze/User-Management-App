@@ -34,10 +34,11 @@ export class UsersService {
     );
   }
 
-  updateUser(user: userModel): Observable<any> {
-    return this.httpClient.put(`${this.apiUrl}/${user.id}`, user).pipe(
+  updateUser(userId: string, user: userModel): Observable<any> {
+    return this.httpClient.put(`${this.apiUrl}/${userId}`, user).pipe(
       map((response) => {
         this.changeEmitter.emit();
+        return response;
       })
     );
   }
@@ -46,6 +47,7 @@ export class UsersService {
     return this.httpClient.delete(`${this.apiUrl}/${usreId}`).pipe(
       map((response: any) => {
         this.changeEmitter.emit();
+        return response;
       })
     );
   }

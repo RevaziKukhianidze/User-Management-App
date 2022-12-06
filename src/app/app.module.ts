@@ -5,11 +5,12 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 
 import { ViewsModule } from './views/views.module';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, ViewsModule, SharedModule],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
