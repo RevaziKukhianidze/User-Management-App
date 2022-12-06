@@ -8,6 +8,16 @@
 
 <a (click)="onAddStatusBtn()" class="btn btn-info">Add Status</a>
 <div class="col-md-5 m-auto">
+  <div class="search-hero">
+    <input
+      class="form-control"
+      type="text"
+      name="search"
+      [(ngModel)]="searchText"
+      autocomplete="off"
+      placeholder=" search status "
+    />
+  </div>
   <table class="table mt-2">
     <thead>
       <tr>
@@ -16,12 +26,13 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let status of pageSize">
+      <tr *ngFor="let status of pageSize | filter : searchText">
         <td scope="col">{{ status.statusName }}</td>
-        <td scope="col btns">
+        <td scope="col  text-right">
           <button (click)="onUpdateStatusBtn(status)" class="btn btn-warning">
             Update
           </button>
+
           <button
             (click)="onDeleteStatusBtn(status._id)"
             class="btn btn-danger"

@@ -17,6 +17,7 @@ import { UsersPgComponent } from './users-pg/users-pg.component';
 import { CreateUserComponent } from './users-pg/create-user/create-user.component';
 import { ReadUsersComponent } from './users-pg/read-users/read-users.component';
 import { UpdateUserComponent } from './users-pg/update-user/update-user.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 const shared: any = [
   CommonModule,
@@ -31,6 +32,7 @@ const shared: any = [
   BrowserModule,
   MatPaginatorModule,
   BrowserAnimationsModule,
+  Ng2SearchPipeModule,
 ];
 
 @NgModule({
@@ -44,6 +46,7 @@ const shared: any = [
   ],
   exports: [[...shared]],
   imports: [
+    Ng2SearchPipeModule,
     MatDialogModule,
     MatInputModule,
     FormsModule,

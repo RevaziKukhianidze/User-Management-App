@@ -20,6 +20,7 @@ export class CategoriesPgComponent implements OnInit {
   pageSize: any[] = [];
   categories: any[] = [];
   showModal: boolean = false;
+  searchText: any;
 
   @Output() showModalEmitter = new EventEmitter<boolean>();
   @Output() updateCategoryEmitter = new EventEmitter();

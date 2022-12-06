@@ -19,6 +19,7 @@ export class StatusesPgComponent implements OnInit {
   pageSize: any[] = [];
   statuses: any[] = [];
   showModal: boolean = false;
+  searchText: any;
 
   @Output() showModalEmitter = new EventEmitter<boolean>();
   @Output() updateStatusEmitter = new EventEmitter();
