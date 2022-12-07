@@ -29,12 +29,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## აპლიკაციის აღწერა და პირობები
 აპლიკაციის საწყილი გვერდი გამოიყურება შემდეგნაირად: 
 
-![image](https://user-images.githubusercontent.com/56683170/206144740-8670e35e-47fc-4a20-82e4-85a63ed60aaa.png)
+![image](https://user-images.githubusercontent.com/56683170/206148190-f95df740-a7d1-4780-86cd-df5275a9bc49.png)
 
 აპლიკაცია იყენებს NodeJs back-end სერვერს, რომელიც დაწერილია Express-ზე
 მონაცემთა ბაზა: MongoDB
 
-![image](https://user-images.githubusercontent.com/56683170/206148190-f95df740-a7d1-4780-86cd-df5275a9bc49.png)
+
 
 
 ##პირობები
