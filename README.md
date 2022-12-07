@@ -34,7 +34,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 აპლიკაცია იყენებს NodeJs back-end სერვერს, რომელიც დაწერილია Express-ზე
 მონაცემთა ბაზა: MongoDB
 
-https://github.com/RevaziKukhianidze/User-management-App-backend
+![image](https://user-images.githubusercontent.com/56683170/206148190-f95df740-a7d1-4780-86cd-df5275a9bc49.png)
+
 
 ##პირობები
 
