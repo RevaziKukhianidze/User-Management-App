@@ -25,7 +25,7 @@ export class ReadUsersComponent {
 
   readAllUsers() {
     this.usersService.getAllUsers().subscribe((response: any) => {
-      this.users = response.data;
+      this.users = response.data.reverse();
       this.pageSize = response.data.slice(0, 5);
     });
   }

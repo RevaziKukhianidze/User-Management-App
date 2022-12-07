@@ -13,6 +13,9 @@ export class CategoryModalComponent implements OnInit {
 
   updateItemId!: string;
 
+  @Input() showModal!: boolean;
+  @Output() showModalEmitter = new EventEmitter<boolean>();
+
   constructor(
     private categoriesService: CategoriesService,
     private categoriesPgComponent: CategoriesPgComponent
@@ -32,9 +35,6 @@ export class CategoryModalComponent implements OnInit {
     });
   }
 
-  @Input() showModal!: boolean;
-  @Output() showModalEmitter = new EventEmitter<boolean>();
-
   loadEditData(item: any) {
     this.showModal = !this.showModal;
     this.categoryItem.setValue({
@@ -48,7 +48,7 @@ export class CategoryModalComponent implements OnInit {
         .createCategory(this.categoryItem.value)
         .subscribe();
       this.categoryItem.reset();
-      this.showModal = false;
+      this.showModal = !this.showModal;
     } else {
       const value = JSON.parse(JSON.stringify(this.categoryItem.value));
       const categoryItemvalue = JSON.parse(JSON.stringify(value));
@@ -58,12 +58,15 @@ export class CategoryModalComponent implements OnInit {
       };
       this.categoriesService.updateCategory(obj).subscribe();
       this.categoryItem.reset();
-      this.showModal = false;
+      this.updateItemId = '';
+      this.showModal = !this.showModal;
+      this.showModalEmitter.emit(this.showModal);
     }
   }
 
   onModalBtnClose() {
-    this.showModal = false;
+    this.showModal = !this.showModal;
+    this.showModalEmitter.emit(this.showModal);
     this.categoryItem.reset();
   }
 }

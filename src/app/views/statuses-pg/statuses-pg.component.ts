@@ -38,7 +38,7 @@ export class StatusesPgComponent implements OnInit {
 
   readAllStatuses() {
     this.statusesService.readAllStatuses().subscribe((response: any) => {
-      this.statuses = response.data;
+      this.statuses = response.data.reverse();
       this.pageSize = response.data.slice(0, 5);
     });
   }
@@ -48,10 +48,11 @@ export class StatusesPgComponent implements OnInit {
     this.updateStatusEmitter.emit(item);
   }
   onShowModalSubscriber(event: boolean) {
-    this.showModal = false;
+    this.showModal = event;
   }
   onAddStatusBtn() {
     this.showModal = !this.showModal;
+    console.log(this.showModal);
   }
 
   onDeleteStatusBtn(id: string) {

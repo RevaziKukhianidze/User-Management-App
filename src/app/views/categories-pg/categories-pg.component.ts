@@ -42,7 +42,7 @@ export class CategoriesPgComponent implements OnInit {
 
   readAllCategories() {
     this.categoriesService.readAllCategories().subscribe((response: any) => {
-      this.categories = response.data;
+      this.categories = response.data.reverse();
       this.pageSize = response.data.slice(0, 5);
     });
   }

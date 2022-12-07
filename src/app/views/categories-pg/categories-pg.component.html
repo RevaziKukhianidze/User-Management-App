@@ -25,7 +25,7 @@
     <tbody>
       <tr *ngFor="let category of pageSize | filter : searchText">
         <td scope="col">{{ category.categoryName }}</td>
-        <td scope="col btns">
+        <td scope="col ">
           <button
             (click)="onUpdateCategoryBtn(category)"
             class="btn btn-warning"

@@ -11,9 +11,10 @@ import { StatusesService } from '../../shared-services/statuses.service';
 export class StatusModalComponent implements OnInit {
   statusItem!: any;
 
-  editdata: any;
-
   updateItemId!: string;
+
+  @Input() showModal!: boolean;
+  @Output() showModalEmitter = new EventEmitter<boolean>();
 
   constructor(
     private statusesService: StatusesService,
@@ -24,7 +25,7 @@ export class StatusModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.statusesPgComponent.updateStatusEmitter.subscribe((response) => {
-      this.updateItemId = response;
+      this.updateItemId = response._id;
     });
   }
 
@@ -33,9 +34,6 @@ export class StatusModalComponent implements OnInit {
       statusName: new FormControl(),
     });
   }
-
-  @Input() showModal!: boolean;
-  @Output() showModalEmitter = new EventEmitter<boolean>();
 
   loadEditData(item: any) {
     this.showModal = !this.showModal;
@@ -58,11 +56,14 @@ export class StatusModalComponent implements OnInit {
       };
       this.statusesService.updateStatus(obj).subscribe();
       this.statusItem.reset();
-      this.showModal = false;
+      this.updateItemId = '';
+      this.showModal = !this.showModal;
+      this.showModalEmitter.emit(this.showModal);
     }
   }
   onModalBtnClose() {
-    this.showModal = false;
+    this.showModal = !this.showModal;
+    this.showModalEmitter.emit(this.showModal);
     this.statusItem.reset();
   }
 }
