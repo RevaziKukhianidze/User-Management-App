@@ -27,7 +27,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 ## აპლიკაციის აღწერა და პირობები
-აპლიკაციის საწყილი გვერდი გამოიყურება შემდეგნაირად: 
+აპლიკაციის საწყისი გვერდი გამოიყურება შემდეგნაირად: 
 
 ![image](https://user-images.githubusercontent.com/56683170/206148190-f95df740-a7d1-4780-86cd-df5275a9bc49.png)
 
